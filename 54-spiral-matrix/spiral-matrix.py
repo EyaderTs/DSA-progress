@@ -1,34 +1,33 @@
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
 
-        temp = []
-        
-        while matrix and matrix[0]:
-            firstRow = matrix.pop(0)
-            temp.extend(firstRow)
+        ret = []
+
+        while matrix:
+            #step 1 - remove the top
+            ret += matrix.pop(0)
+
+            if matrix and matrix[0]:
+                #removet the outer right (from top to bottom)
+                for row in matrix:
+                    ret.append(row.pop())
+                #remove the bottom (in reverse order)
+                # last_row = matrix[-1]
+                for _ in range(len(matrix[-1])):
+                    ret.append(matrix[-1].pop())
+                matrix.pop()
+
+            print(f"ret -  {ret}")
+
+            if matrix and matrix[0]:
+                rev = matrix [::-1]
+                print(f'rev{rev}')
+                print(rev)
+                print(matrix)
+                #remove the outer left (from bottom to top)
+                for row in rev:
+                    ret.append(row[0])
+                    row.pop(0)
+        return ret
             
-            if not matrix or not matrix[0]: 
-                break
 
-            for row in matrix:
-                lastElement = row.pop()
-                temp.append(lastElement)
-
-            if not matrix or not matrix[0]:
-                break
-
-            lastRow = matrix.pop() 
-            lastRow.reverse()      
-            temp.extend(lastRow)
-
-            if not matrix or not matrix[0]:
-                break
-                
-            for row_index in range(len(matrix) - 1, -1, -1):
-                first_element = matrix[row_index].pop(0)
-                temp.append(first_element)
-                
-        return temp
-
-
-        
