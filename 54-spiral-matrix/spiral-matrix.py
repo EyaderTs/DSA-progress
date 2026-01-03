@@ -1,6 +1,6 @@
-class Solution:
-    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-
+class Solution(object):
+    def spiralOrder(self, matrix):
+        
         ret = []
 
         while matrix:
@@ -17,11 +17,8 @@ class Solution:
                     ret.append(matrix[-1].pop())
                 matrix.pop()
 
-            print(f"ret -  {ret}")
-
             if matrix and matrix[0]:
                 rev = matrix [::-1]
-                print(f'rev{rev}')
                 print(rev)
                 print(matrix)
                 #remove the outer left (from bottom to top)
@@ -29,5 +26,6 @@ class Solution:
                     ret.append(row[0])
                     row.pop(0)
         return ret
-            
 
+        
+        
