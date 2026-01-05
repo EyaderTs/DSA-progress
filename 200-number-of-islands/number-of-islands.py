@@ -3,8 +3,7 @@ class Solution(object):
         if not grid:
             return 0
         def bfs(r,c):
-            q = deque()
-            visited.add((r,c))
+            q = deque()           
             q.append((r,c))
             
             while q:
@@ -12,7 +11,7 @@ class Solution(object):
                 direction=[[1,0],[-1,0],[0,1],[0,-1]]
                 for dr,dc in direction:
                     r,c = row+dr, col+dc
-
+            
                     if (r in range(rows) and c in range(cols) and grid[r][c] == '1' and (r, c) not in visited):
                         q.append((r,c))
                         visited.add((r,c))
@@ -25,7 +24,7 @@ class Solution(object):
         for r in range(rows):
             for c in range (cols):
                 if grid[r][c] == '1' and (r,c) not in visited:
+                    visited.add((r,c))
                     bfs(r,c)
                     count+=1
         return count
-        
