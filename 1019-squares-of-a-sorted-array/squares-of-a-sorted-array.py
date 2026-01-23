@@ -1,15 +1,15 @@
 class Solution(object):
     def sortedSquares(self, nums):
-        l,r = 0, len(nums)-1
         q= deque()
-        while l<= r:
-            left = abs(nums[l])
-            right = abs(nums[r])
-            if left>right:
-                q.appendleft(left*left)
-                l+=1            
+        l,r = 0, len(nums)-1
+        while l <= r:
+            lsq = nums[l] * nums[l]
+            rsq = nums[r] * nums[r]
+            if lsq < rsq:
+              q.appendleft(rsq)
+              r-=1
             else:
-                q.appendleft(right*right)
-                r-=1
-        return list(q)
-
+              q.appendleft(lsq)
+              l+=1        
+        return list(q)        
+        
