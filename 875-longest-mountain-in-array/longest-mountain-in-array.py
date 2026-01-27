@@ -1,7 +1,6 @@
 class Solution(object):
     def longestMountain(self, arr):
         largestMtLen = 0
-        # arr =[0,1,0]
 
         for i in range(1,len(arr)-1):
            
