@@ -5,5 +5,4 @@ class Solution(object):
 
         for i,n in enumerate (nums):
             dp[i] = max(n, n+dp[i-1])
-        # print(dp)
         return max(dp)      
